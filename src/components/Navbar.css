@@ -1,0 +1,111 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b4babbea;
+  padding: 1rem;
+  position: relative; /* Needed for absolute positioning of menu */
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  color: rgb(51, 50, 50);
+  font-size: 1.5rem;
+}
+
+.logo {
+  height: 40px; /* Adjust logo size */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Allow wrapping */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: rgb(228, 232, 235);
+  text-decoration: none;
+  padding: 10px 15px; /* Added padding for clickable area */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.navbar a:hover {
+  background-color: #747474; /* Add hover effect */
+}
+
+/* Hamburger styles */
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Active state for hamburger */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column; /* Stack items */
+    width: 100%; /* Full width */
+    align-items: center; /* Center items */
+    position: absolute; /* Overlay */
+    top: 200px; /* Below navbar */
+    left: 0;
+    background-color: #444; /* Darker background for contrast */
+    z-index: 1000; /* Make sure it sits on top */
+    padding: 20px 0; /* Padding for links */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    border-radius: 5px; /* Rounded corners */
+    transition: max-height 0.3s ease; /* Smooth opening */
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Prevent overflow */
+  }
+
+  .navbar-links.open {
+    display: flex; /* Show menu when open */
+    max-height: 300px; /* Set a maximum height for the open menu */
+  }
+
+  .navbar ul {
+    padding: 0; /* Remove padding */
+  }
+
+  .navbar-links li {
+    margin: 10px 0; /* Spacing between items */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+  }
+
+  .navbar-logo {
+    flex-grow: 1; /* Allow logo to take up space */
+  }
+}
